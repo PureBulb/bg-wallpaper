@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>自定义背景图片</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/preload.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="title-wrap">
+        <span class="logo-badge">🖼</span>
+        <div>
+          <div class="title">自定义背景图片</div>
+          <div class="subtitle">零侵入壁纸与毛玻璃特效</div>
+        </div>
+      </div>
+      <span id="hook-status" class="pill">检测中...</span>
+    </header>
+
+    <div id="restart-banner" class="banner" hidden>
+      正在等待连接 Antigravity 主窗口（DevToolsActivePort），请稍候或点击刷新。
+    </div>
+
+    <section class="card row-between">
+      <div>
+        <div class="card-title">开启自定义背景</div>
+        <div class="card-desc">实时热切换，关闭后立刻恢复纯净原生界面</div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="toggle-enabled" checked>
+        <span class="slider"></span>
+      </label>
+    </section>
+
+    <section class="card">
+      <div class="card-title" style="margin-bottom:8px;">上传本地图片（推荐）</div>
+      <div id="dropzone" class="dropzone">
+        <input id="file-input" type="file" accept="image/*" hidden>
+        <div class="dropzone-text">点击选择图片或拖拽图片到此处</div>
+        <div class="dropzone-hint">支持 PNG / JPG / WEBP / GIF（最大 20MB）</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-title" style="margin-bottom:8px;">或填写本地图片绝对路径</div>
+      <div class="path-row">
+        <input id="input-path" type="text" placeholder="~/Pictures/wallpaper.jpg">
+        <button id="btn-apply-path" class="btn-primary">应用</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-title" style="margin-bottom:8px;">内置流光预设壁纸</div>
+      <div class="preset-grid">
+        <button class="preset-btn" data-preset="aurora">
+          <span class="swatch swatch-aurora"></span>
+          <span>极光紫蓝</span>
+        </button>
+        <button class="preset-btn" data-preset="sunset">
+          <span class="swatch swatch-sunset"></span>
+          <span>落日余晖</span>
+        </button>
+        <button class="preset-btn" data-preset="nebula">
+          <span class="swatch swatch-nebula"></span>
+          <span>静谧星云</span>
+        </button>
+        <button class="preset-btn" data-preset="forest">
+          <span class="swatch swatch-forest"></span>
+          <span>深海森光</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="card sliders-card">
+      <div class="card-title" style="margin-bottom:6px;">画面与毛玻璃参数调节</div>
+
+      <div class="slider-item">
+        <div class="row-between">
+          <span class="slider-label">壁纸可见度</span>
+          <span class="slider-val" id="val-opacity">42%</span>
+        </div>
+        <input type="range" id="range-opacity" min="5" max="100" value="42">
+      </div>
+
+      <div class="slider-item">
+        <div class="row-between">
+          <span class="slider-label">背景模糊度</span>
+          <span class="slider-val" id="val-blur">4 px</span>
+        </div>
+        <input type="range" id="range-blur" min="0" max="30" value="4">
+      </div>
+
+      <div class="slider-item">
+        <div class="row-between">
+          <span class="slider-label">界面底色浓度（越高文字越清晰）</span>
+          <span class="slider-val" id="val-surface">78%</span>
+        </div>
+        <input type="range" id="range-surface" min="30" max="95" value="78">
+      </div>
+
+      <div class="row-between" style="margin-top:4px;">
+        <span class="slider-label">填充模式</span>
+        <select id="select-fit" class="select-box">
+          <option value="cover">铺满裁剪 (Cover)</option>
+          <option value="contain">完整居中 (Contain)</option>
+        </select>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="/app.js"></script>
+</body>
+</html>
