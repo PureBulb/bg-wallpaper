@@ -530,4 +530,4 @@ process.on('SIGINT', shutdown);
 app.run();
 
 setTimeout(() => { applyToMainWindows(false); }, 400);
-setInterval(ensureInjectedLoop, 3000);
+setInterval(ensureInjectedLoop, 60000);

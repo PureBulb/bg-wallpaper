@@ -1,6 +1,9 @@
 {
   "command": "node",
-  "args": ["main.mjs"],
+  "args": ["--max-old-space-size=32", "--optimize-for-size", "main.mjs"],
+  "env": {
+    "NODE_OPTIONS": "--max-old-space-size=32 --optimize-for-size"
+  },
   "restart_policy": "always",
   "display_name": "背景图片设置",
   "description": "自定义 Antigravity 主界面壁纸、透明度、模糊度与毛玻璃效果",
