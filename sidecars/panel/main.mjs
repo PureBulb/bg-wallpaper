@@ -268,14 +268,22 @@ function buildRendererScript(payload) {
         --sidebar-secondary: color-mix(in srgb, var(--bgwp-orig-sidebar-secondary, #222222) \${Math.min(sidebarTintPct + 14, 55)}%, transparent) !important;
         --sidebar-muted: color-mix(in srgb, var(--bgwp-orig-sidebar-muted, #1a1a1a) \${sidebarTintPct}%, transparent) !important;
         --card: color-mix(in srgb, var(--bgwp-orig-card, #181818) \${cardTintPct}%, transparent) !important;
+        --shell: transparent !important;
+        --shell-canvas: transparent !important;
       }
 
       html[\${ROOT_ATTR}="true"] body,
       html[\${ROOT_ATTR}="true"] #root,
-      html[\${ROOT_ATTR}="true"] #root > div {
+      html[\${ROOT_ATTR}="true"] #root > div,
+      html[\${ROOT_ATTR}="true"] .agy-shell,
+      html[\${ROOT_ATTR}="true"] .agy-inset-shell,
+      html[\${ROOT_ATTR}="true"] body[data-agy-theme] .agy-shell,
+      html[\${ROOT_ATTR}="true"] body[data-agy-theme] .agy-inset-shell {
         position: relative !important;
         z-index: 1 !important;
         background-color: transparent !important;
+        --shell: transparent !important;
+        --shell-canvas: transparent !important;
       }
 
       /* Prevent nested .bg-sidebar elements (project headers/buttons) from stacking dark blocks */
